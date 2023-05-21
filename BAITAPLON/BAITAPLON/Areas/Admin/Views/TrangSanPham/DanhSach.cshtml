@@ -1,0 +1,145 @@
+﻿
+@model IEnumerable<BAITAPLON.Models.SanPham>
+
+@{
+    ViewBag.Title = "DanhSach";
+    Layout = "~/Areas/Admin/Views/Shared/conga.cshtml";
+
+}
+
+<br />
+<div style="float:left">
+    <h2>Quản lý sản phẩm </h2>
+
+    @using (Html.BeginForm("Search", "TrangSanPham", FormMethod.Get))
+    {
+
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div style="margin-left:200px" class="input-group">
+                <input name="searchQuery" class="form-control" type="text" placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    }
+
+
+
+
+
+</div>
+
+<br />
+<br />
+<br />
+<br />
+
+<p>
+    <a class="btn btn-danger" href="~/Admin/TrangSanPham/ThemMoi">  Thêm  Sản Phẩm</a>
+    <button style="margin-left:980px" class="btn pull-right btn-info btn-xs" onclick="ExportExcel('tableSP','Danh sach san pham ')">Xuất Exicel</button>
+</p>
+
+
+
+
+
+<table class="table table-bordered" id="tableSP">
+    <tr>
+
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Giá mới
+        </th>
+        <th>
+            Giá cũ
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+            Tóm tắt
+        </th>
+        <th>
+            Hãng sản xuất
+        </th>
+
+        <th style="width:200px">
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </th>
+        <th> Hành động</th>
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSanPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaBanMoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaBanCu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TomTat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaiViet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HangSanXuat.TenHang)
+            </td>
+
+            <td>
+
+                <img src=" @Html.DisplayFor(modelItem => item.HinhAnh)" style="height:80px;" />
+            </td>
+
+
+
+
+
+
+            <td>
+                <a style="height:40px;width:70px" class="btn btn-xs btn-info " href="~/Admin/TrangSanPham/CapNhat?id=@item.ID">
+                    SỬA
+                </a>
+
+                <br />
+                <br />
+                <button style="height:40px;width:70px" class="btn btn-xs btn-danger " onclick="if (confirm('Bạn có chắc muốn xóa không ') == true) { location.href = '/Admin/TrangSanPham/Xoa?id=@item.ID'}  ">
+                    XÓA
+                </button>
+            </td>
+
+
+
+        </tr>
+    }
+
+</table>
+<!-- Thêm mã phân trang -->
+<br />
+
+<!-- Kết thúc -->
+<!-- xuat file excel  cho cái section có tên là script -->
+@section script {
+    <script>
+
+        function ExportExcel(idTable, fileName) {
+            $("#" + idTable).table2excel({
+                exclude: "",
+                name: "Worksheet Name",
+                filename: fileName + ".xls",
+                preserveColors: false
+            });
+        }
+    </script>
+}
+

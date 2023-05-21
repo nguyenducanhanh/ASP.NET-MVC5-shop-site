@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BAITAPLON.Models.TinTuc>
+
+@{
+    ViewBag.Title = "TinTuc";
+    Layout = "~/Views/Shared/View1.cshtml";
+}
+
+
+<section class="container section-5">
+    <h2 class="subscribe-input-label">TIN CÔNG NGHỆ MỚI </h2>
+
+</section>
+
+    @foreach (var item in Model)
+    {
+
+        <div style="float:left;height:400px;width:100%;">
+
+            <div style="float:left;height:400px;width:30%;">
+
+                <div style="font-size:20px;color:crimson;text-align:center">@item.TieuDe</div>
+                <br />
+
+                <div>
+                    <a href="#">
+                        <img style="height:200px;margin-left:100px;width:200px;border-radius:10px" src="@item.HinhAnh" alt="" border="0">
+
+                        </a>
+</div>
+                <br />
+
+
+            </div>
+
+            <div style="float:left;height:400px;width:70%;">
+
+                <br />
+                <br />
+                <div class="specifications">
+
+                    Thông tin sản phẩm: <span class="blue" style="color: crimson">  @item.TomTat</span><br><br />
+
+
+                    <span class="blue" style="color: crimson"> @item.NoiDung </span><br><br />
+                    <br />
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+        <hr />
+        <br />
+
+    }

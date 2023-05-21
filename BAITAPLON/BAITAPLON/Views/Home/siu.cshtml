@@ -1,0 +1,39 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+
+
+
+
+@foreach (var item in Model)
+{
+
+
+
+
+    <div class="phone-mail">
+        <div class="phone">
+
+
+
+            <div class="title">
+                <span>Tư vấn bán hàng</span>
+                <p style="color:red"> @item.HoTen </p>
+            </div>
+
+
+
+        </div>
+        <div class="mail">
+
+            <div class="title">
+                <span>Gửi email liên hệ</span>
+                <p style="color:red"> @item.Email</p>
+            </div>
+        </div>
+    </div>
+
+}

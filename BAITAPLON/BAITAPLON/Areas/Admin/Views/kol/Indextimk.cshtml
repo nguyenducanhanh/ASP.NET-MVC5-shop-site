@@ -1,0 +1,15 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Search", "TrangSanPham", FormMethod.Get))
+{
+    <div class="input-group">
+        <input type="text" class="form-control" name="searchQuery" placeholder="Search for products...">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go!</button>
+        </span>
+    </div>
+}
+

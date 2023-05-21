@@ -1,0 +1,105 @@
+﻿@model BAITAPLON.Models.Cart
+
+@{
+    ViewBag.Title = "giỏ hàng";
+    Layout = "~/Views/Shared/View1.cshtml";
+}
+
+<h2>GIỎ HÀNG </h2>
+<hr />
+<br />
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr style="color:#0026ff">
+                <th> </th>
+                <th></th>
+                <th> Giá </th>
+                <th>Số lượng</th>
+                <th>Tổng Giá</th>
+                <th>.         .</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                double total = Convert.ToDouble(item._shopping_product.GiaBanMoi.Value * item._shopping_quantity);
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item._shopping_product.TenSanPham)
+                    </td>
+                    <td>
+
+                        <img src="@Url.Content(item._shopping_product.HinhAnh)" style="width:100px;height:100px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item._shopping_product.GiaBanMoi)
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("Update_Quantity_Cart", "GioHang"))
+                        {
+
+                            <input type="hidden" value="@item._shopping_product.ID" name="ID_Product" />
+                            <input style="width:60px" type="number" value="@item._shopping_quantity" name="Quantity" />
+                            <input type="submit" value="Cập nhật " />
+                        }
+                    </td>
+
+                    <td>
+                        <b style="text-decoration: none; color:#000000; font-size:15px ; padding-left:20px"> @total </b>
+                    </td>
+                    <td>
+
+
+                        <a style="text-decoration: none; color:#ff0000; font-size:20px ; padding-left:100px" href='/GioHang/RemoveCart/@item._shopping_product.ID'>  XÓA  </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+
+
+    </table>
+    <hr />
+    <b style="font-size: 15px;  text-align: right ">  Tổng tiền phải trả : </b>
+    <b colspan="S" style="float: right; text-align: left; font-size: 15px; color: #ff0000;">@Model.Total_Money() </b>
+
+
+
+    <hr />
+
+
+    <br />
+
+
+    <br />
+
+
+
+
+    <hr />
+
+
+
+    <br />
+
+
+    if (BAITAPLON.Models.DH.tt==1)
+    {
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <a style="vertical-align: middle; border-radius: 6px; text-align: center; font-size: 22px; text-decoration: none; color: #ffffff; background-color: #ff6a00;" href="~/TTonline/Index"><i style="margin:5px 10px 10px 10px;" class="fa fa-credit-card" aria-hidden="true"> </i>Thanh toán online</a>
+        </div>
+    }
+    <div style=" display: flex; justify-content: center; align-items: center; ">
+        <a name="button" value="OK" type="button" style="line-height:35px;height:35px;text-decoration: none;  border-radius: 6px; text-align: center; font-size: 21px; color: #ffffff; background-color: #ff6a00;"
+           href="~/DonHangs/DatHang">
+            <i style="margin-left:5px;" class="fa fa-shopping-bag" aria-hidden="true"></i> ĐẶT HÀNG
+        </a>
+
+    </div>
+
+}
+
+

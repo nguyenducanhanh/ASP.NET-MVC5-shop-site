@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BAITAPLON.Models.LienHe>
+
+@{
+    ViewBag.Title = "DanhSach";
+    Layout = "~/Areas/Admin/Views/Shared/conga.cshtml";
+}
+
+<h2>Danh Sách Liên Hệ </h2>
+
+<p>
+    <a class="btn btn-danger" href="~/Admin/LienHe/ThemMoi">  Thêm  Liên Hệ</a>
+</p>
+
+
+
+
+
+<div>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SDT)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+
+
+   
+
+        <td>
+          
+
+            <button style="height:40px;width:70px" class="btn btn-xs btn-danger " onclick="if (confirm('Bạn có chắc muốn xóa không ') == true) { location.href = '/Admin/LienHe/Xoa?id=@item.MaLienHe'}  ">
+                XÓA
+            </button>
+        </td>
+    </tr>
+        }
+
+    </table>
+</div>

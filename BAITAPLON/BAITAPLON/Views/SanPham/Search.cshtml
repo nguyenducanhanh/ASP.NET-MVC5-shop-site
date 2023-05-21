@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/View1.cshtml";
+}
+
+
+@foreach (var item in Model)
+{
+
+
+    <div class="product1">
+        <div class="product-toyota">
+
+            <div class="product-toyotaxe">
+                <div class="product-item1 product-xe">
+
+                    <div class="productvios">
+
+
+                        <div class="product-item">
+
+
+                            <div class="image">
+                                <img src="@item.HinhAnh" alt="">
+                            </div>
+                            <div class="product-title">
+                                <h3 style="margin-top:-10px">@item.TenSanPham</h3>
+
+                                <del>@string.Format("{0:#,0}", item.GiaBanCu)<u>đ</u></del>
+                                <span>@string.Format("{0:#,0}", item.GiaBanMoi) <u>đ</u></span>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

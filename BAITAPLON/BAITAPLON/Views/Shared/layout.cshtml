@@ -1,0 +1,98 @@
+﻿<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet' />
+<link href="~/Theme/css/menu.css" rel="stylesheet" />
+<title>@ViewBag.title</title>
+
+
+<script src="~/Theme/js/web.js"></script>
+<body>
+    <header>
+        <div class="company-logo">LAPTOP EPU</div>
+        <div style="width: 70px; height: 110px; margin-left: 10px;float:left;margin-top:20px">
+
+        </div>
+
+        <nav class="navbar">
+            <ul class="nav-items">
+                <li class="nav-item"><a href="~/Home/Home" class="nav-link">Trang chủ</a></li>
+                <li class="nav-item"><a href="~/SanPham/TrangDanhSachSanPham" class="nav-link">Sản phẩm</a></li>
+                <li class="nav-item"><a href="~/TinTuc/TinTuc" class="nav-link">Tin tức</a></li>
+                <li class="nav-item"><a href="~/GioHang/ShowToCart" class="nav-link">Giỏ hàng</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <i class="bx bx-menu"></i>
+            <i class="bx bx-x"></i>
+        </div>
+    </header>
+    <main>
+        <!-- HOME SECTION -->
+        <!-- <section class="container section-1">
+            <div class="slogan">
+                <h1 class="company-title">ĐỒ ÁN WEBSITE </h1>
+                <h2 class="company-slogan">
+                    WEBSITE BÁN MÁY TÍNH D15CNPM4 đại học điện lực
+                </h2>
+            </div>
+            <div class="home-computer-container">
+                <img class="home-computer" src="https://github.com/r-e-d-ant/Computer-store-website/blob/main/assets/images/home_img.png?raw=true" alt="a computer in dark with shadow" class="home-img" />
+            </div>
+        </section>
+
+        <!-- OFFER SECTION -->
+        <section class="container section-2">
+            <!-- offer 1 -->
+            <!-- SPONSOR SECTION -->
+            <section class="container section-4">
+                <!-- SPONSOR group 1 -->
+                <div class="sponsor sponsor-1">
+
+                    <a class="giare" href="~/SanPham/SanPhamGiaRe">Giá Rẻ </a>
+                </div>
+                <div class="sponsor sponsor-2">
+
+                    <a class="giare" href="~/SanPham/SanPhamNoiBat">Nổi bật </a>
+                </div>
+
+                <!-- SPONSOR group 2 -->
+                <div class="sponsor sponsor-3">
+
+                    <a class="giare" href="~/SanPham/SanPhamGiaRe">Giá Rẻ </a>
+                </div>
+                <div class="sponsor sponsor-4">
+
+                    <a class="giare" href="~/SanPham/SanPhamGiaRe">Giá Rẻ </a>
+                </div>
+            </section>
+
+            <!-- SUBSCRIBE SECTION-->
+
+
+
+            <br />
+            <hr />
+            <div>
+                @RenderBody()
+            </div>
+          
+
+
+
+        </section>
+    </main>
+
+    <br />
+
+</body>
+
+
+
+
+
+    <footer style="margin-top:1000px">
+       
+        <div class="container end-footer">
+            <div class="copyright">copyright © 2023 - Đại học điện lực • <b>ĐỒ ÁN LẬP TRÌNH WEBSITE </b></div>
+            <a class="designer" href="#">NGUYỄN ĐỨC ANH and PHẠM ĐĂNG KHÁNH</a>
+        </div>
+    </footer>
+

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<BAITAPLON.Models.SanPham>
+
+@{
+    ViewBag.Title = "Bạn cần tìm ";
+    Layout = "~/Areas/Admin/Views/Shared/conga.cshtml";
+}
+
+
+
+<h2>Kết quả tìm kiếm </h2>
+
+
+
+    <table class="table table-bordered">
+        <tr>
+
+            <th>
+                Tên sản phẩm
+            </th>
+            <th>
+                Giá mới
+            </th>
+            <th>
+                Giá cũ
+            </th>
+            <th>
+                Mô tả
+            </th>
+            <th>
+                Tóm tắt
+            </th>
+            <th>
+                Hãng sản xuất
+            </th>
+
+            <th style="width:200px">
+                @Html.DisplayNameFor(model => model.HinhAnh)
+            </th>
+            <th> Hành động</th>
+        </tr>
+
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSanPham)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaBanMoi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaBanCu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TomTat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BaiViet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HangSanXuat.TenHang)
+                </td>
+
+                <td>
+
+                    <img src=" @Html.DisplayFor(modelItem => item.HinhAnh)" style="height:80px;" />
+                </td>
+
+
+
+
+
+
+                <td>
+                    <a style="height:40px;width:70px" class="btn btn-xs btn-info " href="~/Admin/TrangSanPham/CapNhat?id=@item.ID">
+                        SỬA
+                    </a>
+
+                    <br />
+                    <br />
+                    <button style="height:40px;width:70px" class="btn btn-xs btn-danger " onclick="if (confirm('Bạn có chắc muốn xóa không ') == true) { location.href = '/Admin/TrangSanPham/Xoa?id=@item.ID'}  ">
+                        XÓA
+                    </button>
+                </td>
+
+
+
+            </tr>
+        }
+
+    </table>
+

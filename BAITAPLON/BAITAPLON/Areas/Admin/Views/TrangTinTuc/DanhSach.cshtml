@@ -1,0 +1,101 @@
+﻿@model IEnumerable<BAITAPLON.Models.TinTuc>
+
+@{
+    ViewBag.Title = "DanhSach";
+    Layout = "~/Areas/Admin/Views/Shared/conga.cshtml";
+}
+
+
+
+<br />
+
+
+<h2>Danh Sách Tin Tức </h2>
+
+<p>
+    <a class="btn btn-danger" href="~/Admin/TrangTinTuc/ThemMoi">  Thêm Tin Mới  </a>
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Tiêu đề
+        </th>
+        <th>
+          Tóm tắt 
+        </th>
+        <th>
+            Nội dung
+        </th>
+     
+        <th>
+           Tác giả
+        </th>
+        <th>
+          Hình ảnh 
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TomTat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDung)
+            </td>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.TacGia)
+            </td>
+
+
+            <td>
+
+                <img src=" @Html.DisplayFor(modelItem => item.HinhAnh)" style="height:80px;" />
+            </td>
+
+            <td>
+                <a style="height:40px;width:70px" class="btn btn-xs btn-info " href="~/Admin/TrangTinTuc/CapNhat?MaTin=@item.MaTin">
+                    SỬA
+                </a>
+
+                <br />
+                <br />
+                <button style="height:40px;width:70px" class="btn btn-xs btn-danger " onclick="if (confirm('Bạn có chắc muốn xóa không ') == true) { location.href = '/Admin/TrangTinTuc/Xoa?MaTin=@item.MaTin'}  ">
+                    XÓA
+                </button>
+            </td>
+
+
+
+        </tr>
+    }
+
+</table>
+<!-- Thêm mã phân trang -->
+<br />
+
+<!-- Kết thúc -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

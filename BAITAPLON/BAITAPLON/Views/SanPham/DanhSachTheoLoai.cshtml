@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BAITAPLON.Models.SanPham>
+
+@{
+    ViewBag.Title = "DanhSachTheoLoai";
+    Layout = "~/Views/Shared/layout.cshtml";
+    int? idHang = (int?)ViewBag.idHang;
+}
+
+
+<div class="center_content">
+
+
+
+
+
+
+    @foreach (var item in Model)
+    {
+    <div class="center_title_bar">Danh Sách Điện Thoại Loại @item.HangSanXuat.TenHang  </div>
+        <div class="prod_box">
+            <div class="center_prod_box">
+
+
+                <div class="product_title"><a href="#">@item.TenSanPham </a></div>
+                <div class="product_img">
+                    <a href="~/SanPham/TrangChiTietSanPham?id=@item.ID">
+                        <img style="height:120px;width:160px;border-radius:10px" src="@item.HinhAnh" alt="" border="0">
+                    </a>
+                </div>
+                <div class="prod_price"><span class="reduce">@string.Format("{0:#,0}", item.GiaBanCu)  $</span> <span class="price">@string.Format("{0:#,0}", item.GiaBanMoi) $</span></div>
+
+            </div>
+            <div class="prod_details_tab">
+                <a href="~/SanPham/TrangChiTietSanPham?id=@item.ID" class="prod_buy">Xem chi tiết</a>
+                <a href="/GioHang/AddtoCart/@item.ID" class="prod_details">Đặt hàng </a>
+            </div>
+
+
+        </div>
+
+
+
+    }
+</div>

@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<hr />
+
+
+
+@foreach (var item in Model)
+{
+
+
+    <div class="product1" style="margin-top:100px;">
+        <div class="product-toyota">
+
+            <div class="product-toyotaxe">
+                <div class="product-item1 product-xe">
+
+                    <div class="productvios">
+
+
+                        <div class="product-item">
+
+                            <a href="/SanPham/TrangChiTietSanPham/@item.ID">
+                                <div class="image">
+                                    <img src="@item.HinhAnh" alt="">
+                                </div>
+                            </a>
+                            <div class="product-title">
+                                <h3 style="margin-top:-10px">@item.TenSanPham</h3>
+
+                                <del>@string.Format("{0:#,0}", item.GiaBanCu)<u>đ</u></del>
+                                <span>@string.Format("{0:#,0}", item.GiaBanMoi) <u>đ</u></span>
+                                <a style="margin-top:15px;margin-left:90px;" href="/GioHang/AddtoCart/@item.ID" class="product_add_cart"> THÊM GIỎ HÀNG </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+}
+
+
+
+

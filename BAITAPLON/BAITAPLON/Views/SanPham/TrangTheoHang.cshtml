@@ -1,0 +1,44 @@
+﻿
+
+@{
+    ViewBag.Title = "Trang Chi Tiết Hãng";
+    Layout = "~/Views/Shared/layout.cshtml";
+    int? idHang = (int?)ViewBag.idHang;
+}
+
+<div class="center_content">
+    <div class="center_title_bar">Chi tiết cho:  @Model.TenSanPham</div>
+    <div class="prod_box_big">
+        <div class="center_prod_box_big">
+            <div class="product_img_big">
+                <a href="javascript:popImage('~/Theme/images/ig_pic.jpg','Some Title')" title="header=[ @Model.TenSanPham] body=[&nbsp;] fade=[on]">
+                    <img style="height:150px;margin-left:-33px;width:150px;border-radius:10px" src="@Model.HinhAnh" alt="" border="0">
+                </a>
+
+            </div>
+            <div class="details_big_box">
+                <div class="product_title_big">@Model.TenSanPham</div>
+                <div class="specifications">
+                    Hãng sản xuất : <span class="blue">@Model.HangSanXuat.TenHang</span><br>
+                    Tóm tắt: <span class="blue">@Model.TomTat</span><br>
+
+
+                    Bài viết :<span class="blue"> @Model.BaiViet </span><br>
+                </div>
+                <div class="prod_price_big">
+
+                    <span class="reduce">@string.Format("{0:#,0}", Model.GiaBanCu)  usd   </span>
+                    <span class="price">@string.Format("{0:#,0}", Model.GiaBanMoi)  usd</span>
+
+
+                </div>
+
+                <a href="/GioHang/AddtoCart/@Model.ID" class="prod_compare">Đặt hàng </a>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

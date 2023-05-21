@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BAITAPLON.Models.CTDonHang>
+
+@{
+    ViewBag.Title = "Thống kê";
+    Layout = "~/Areas/Admin/Views/Shared/conga.cshtml";
+}
+
+<h2>Thống kê</h2>
+
+<div style="vertical-align: middle; display: inline-grid; height: 40px; width: 280px; background-color: greenyellow; border-radius: 6px; text-align: center; align-items: center;">
+    @Html.ActionLink("Thống kê sản phẩm bán được", "tksp")
+</div>
+<div style="vertical-align: middle; display: inline-grid; height: 40px; width: 280px; background-color: orange; border-radius: 6px; text-align: center; align-items: center;">
+    @Html.ActionLink("Thống kê doanh thu", "tkdt")
+</div>
+
+<table class="table">
+    @if (BAITAPLON.Areas.Admin.Data.tk.ktk == 0)
+    {
+        <tr>
+            <th>
+                ID sản phẩm
+            </th>
+            <th>
+                Tên sản phẩm
+            </th>
+            <th>
+                Số lượng
+            </th>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <th>
+                ID đơn hàng
+            </th>
+            <th>
+                Thành tiền
+            </th>
+        </tr>
+    }
+
+    @if (BAITAPLON.Areas.Admin.Data.tk.ktk == 0)
+    {
+        foreach (var item in BAITAPLON.Areas.Admin.Data.tk.tksp)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tensp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sl)
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        foreach (var item in BAITAPLON.Areas.Admin.Data.tk.tkdt)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gia)
+                </td>
+            </tr>
+        }
+        <P style="margin-top:30px;color:green"><b>Tổng doanh thu:</b>  @BAITAPLON.Areas.Admin.Data.tk.tkdt.Sum(obj=>obj.gia) VNĐ</P>
+    }
+</table>

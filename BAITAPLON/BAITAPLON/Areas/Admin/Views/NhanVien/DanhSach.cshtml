@@ -1,0 +1,137 @@
+﻿
+@model IEnumerable<BAITAPLON.Models.NhanVien>
+
+@{
+    ViewBag.Title = "DanhSach";
+    Layout = "~/Areas/Admin/Views/Shared/conga.cshtml";
+
+}
+<br />
+<div style="float:left">
+
+    <h2>Quản lý nhân viên </h2>
+
+    @using (Html.BeginForm("Search", "NhanVien", FormMethod.Get))
+    {
+
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div style="margin-left:200px" class="input-group">
+                <input name="searchQuery" class="form-control" type="text" placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    }
+
+
+
+
+
+</div>
+
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+
+<p>
+    <a class="btn btn-danger" href="~/Admin/NhanVien/ThemMoi">  Thêm Quản Trị Viên</a>
+    <button style="margin-left:880px" class="btn pull-right btn-info btn-xs" onclick="ExportExcel('tableNV','Danh sach nhân viên ')">Xuất</button>
+</p>
+
+
+<table class="table table-bordered" id="tableNV">
+    <tr>
+
+        <th>
+            Tài khoản
+        </th>
+
+        <th>
+            Tên
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Chức vụ
+        </th>
+
+
+        <th> Hành động</th>
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNhanVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ChucVu)
+            </td>
+
+
+
+
+
+
+            <td>
+                <a style="height:40px;width:70px" class="btn btn-xs btn-info " href="~/Admin/NhanVien/CapNhat?id=@item.ID">
+                    SỬA
+                </a>
+
+                <br />
+                <br />
+                <button style="height:40px;width:70px" class="btn btn-xs btn-danger " onclick="if (confirm('Bạn có chắc muốn xóa không ') == true) { location.href = '/Admin/NhanVien/Xoa?id=@item.ID'}  ">
+                    XÓA
+                </button>
+            </td>
+
+
+
+        </tr>
+    }
+
+</table>
+<!-- Thêm mã phân trang -->
+<br />
+
+<!-- Kết thúc -->
+
+@section script {
+    <script>
+
+        function ExportExcel(idTable, fileName) {
+            $("#" + idTable).table2excel({
+                exclude: "",
+                name: "Worksheet Name",
+                filename: fileName + ".xls",
+                preserveColors: false
+            });
+        }
+    </script>
+}
+
